@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    
+    <title>Aplicação NodeJS</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+    <script>
+    var app = angular.module('app',['ngRoute']);
+app.controller('appctrl',function($scope,$http){
+    
+$scope.cadastrar= function(){
+        var  usuario = {nome: $scope.nome, idade : $scope.idade};
+              
+        $http.post('/usuario',usuario).then((usuario,status)=>{
+            alert('cadastrou com sucesso');
+        })
+    }
+    });
+    </script>
+</head>
+
+<body ng-controller="appctrl">
+    <center><form>
+                <h2>Cadastrando usuário</h2>
+        <input type="text" ng-model="nome" placeholder="Nome"><br><br>
+        <input type="number" ng-model="idade" placeholder="Idade"><br><br>
+        <button ng-click="cadastrar()">Cadastrar</button>
+        </form>
+    </center>
+    <div ng-bind="usuario"></div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<html ng-app="app">
+    <head>
+        <title>TEste</title>
+        <meta charset="utf-8">
+        <script src="bower_components/angular/angular.min.js"></script>
+    </head>
+  
+    <body ng-controller="controle">
+     
+        <input type="text" ng-model="texto">
+        <br>
+        <div ng-bind="texto"></div>
+    </body>
+    <script>
+            angular.module("app",[]);
+            angular.module("app").controller("controle",function($scope){
+                $scope.texto = "";
+            });
+        </script>
+</html>

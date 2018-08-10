@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <meta charset="utf-8" />
+    <title>Page Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script>
+        var app = angular.module('app',[]);
+        app.controller('appctrl',function($scope,$http){
+            $scope.cadastrar = function(){
+                var produto = {nome: $scope.nome, preco: $scope.preco};
+                
+                let request = {
+                    url: 'localhost:3000/produtos',
+                    method: 'POST',
+                    data: produto   
+                }
+
+
+                $http.post('/produtos', produto).then(function(produto,status){
+                    console.log('cadastrou');
+                })
+            }
+
+            $scope.buscar = function(){
+                    let request = {
+                        url:'localhost:3000/produtos',
+                        method: 'GET',                
+                    }
+                    $http.get('/produtos').then(console.log('ai'));
+            }
+        });
+    </script>
+</head>
+<body ng-controller="appctrl">
+    <form>
+        <input type="text" placeholder="Nome do produto" ng-model="nome"><br>
+        <input type="text" placeholder="Preço do produto" ng-model="preco"><br>
+        <input type="submit" value="Cadastrar" ng-click="cadastrar()">
+    </form><br><br>
+    <button ng-click="buscar()">Buscar todos</button>
+</body>
+</html>

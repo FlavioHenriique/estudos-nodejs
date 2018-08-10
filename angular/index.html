@@ -1,0 +1,51 @@
+
+<html ng-app="lista">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="bower_components/bootstrap-css/css/bootstrap.min.css">
+    <title>Angular</title>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/app.js"></script>
+    <style>
+        .jumbotron{
+            width: 400px;
+            text-align: center;
+            margin-top: 20px;
+            margin-left:auto;
+            margin-right: auto;
+        }
+
+        .table{
+            margin-top: 20px;
+        }        
+    </style>
+</head>
+<body ng-controller="listactrl">
+  <div class="jumbotron">
+    <h2 ng-bind="app"></h2>
+  <table class="table table-striped">
+    <tr>
+        <th>Nome</th>
+        <th>Telefone</th>
+        <th>Operadora</th>
+    </tr>
+    <tr ng-repeat="contato in contatos">
+       <td ng-repeat="(key,value) in contato">
+        {{value}}
+       </td>
+    </tr>
+  </table>
+
+  <hr>
+  <input type="text" ng-model="contato.nome"  class="form-control"/><br>
+  <input type="text" ng-model="contato.telefone"  class="form-control"/><br>
+  <select ng-model="contato.operadora" ng-options="operadora.codigo as operadora.nome for operadora in operadoras" class="form-control">
+    <option value="" >Selecione uma operadora...</option>
+  </select>
+<br>
+  <button class="btn btn-primary btn-block" ng-click="adicionar(contato)" 
+  ng-disabled="!contato.nome || !contato.telefone">Adicionar contato</button>
+</div>
+</body>
+</html>

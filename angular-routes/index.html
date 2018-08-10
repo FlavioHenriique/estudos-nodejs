@@ -1,0 +1,25 @@
+<html ng-app="App">
+<head>
+    <meta charset="utf-8" />
+    <title>Angular routes</title>
+   
+<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+<script  type="text/javascript" src="bower_components/angular-route/angular-route.min.js" ></script>
+<script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+    <ul>
+        <li><a href="#/home">Home</a></li>
+        <li><a href="#/cadastro">Cadastro</a></li>
+        <li><a href="#/sobre">Sobre</a></li>
+       </ul>
+
+        
+       {{message}}
+       <div ng-view="">
+
+       </div>
+   
+</body>
+
+</html>
